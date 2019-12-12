@@ -7,7 +7,9 @@ export const Container = styled.div`
 `;
 
 export const Todo = styled.div`
+	width: 800px; 
+	text-align: center;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	flex-wrap: wrap;
+	justify-content: space-around;
 `;

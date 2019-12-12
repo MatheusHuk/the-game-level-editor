@@ -27,5 +27,5 @@ export const Finish = styled.div`
 export const Undefined = styled.div`
 	width: 50px;
 	height: 50px;
-	background-color: blue;
+	background-color: black;
 `;

@@ -1,13 +1,20 @@
 import React from 'react';
-import { Todo, Container } from './style.js';
+import { Provider } from 'react-redux';
 import State from './state/state.js';
+import { Todo, Container } from './style.js';
+import EditMenu from './editMenu/editMenu.js';
+import store from './store';
+
 function App() {
   return (
-    <Todo>
-		<Container>
-			<State />
-		</Container>
-	</Todo>
+    <Provider store={store}>
+		<Todo>
+			<Container>
+				<State />
+			</Container>
+			<EditMenu />
+		</Todo>
+	</Provider>
   );
 }
 

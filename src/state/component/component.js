@@ -1,31 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import * as Block from './style.js';
-import { options } from './options.js';
+import { options } from '../../constants/options.js';
 
 export default function Component({ X, Y, Data }){
 	
-	const [render, setRender] = useState(<Block.NoBlock />);
-	const [id, setId] = useState("1-1");
+	const [render, setRender] = useState();
+	const [id, setId] = useState();
 	const [idIndex, setIdIndex] = useState(0);
+	const { selectedBlock } = useSelector(store => store.editor);
 	
 	const toggleId = () => {
-		if(idIndex === 3){
-			setIdIndex(0);
-		} else {
-			setIdIndex(idIndex + 1);
+		if(selectedBlock !== ""){
+			setRender(toggleBlock(selectedBlock));
 		}
 	}
 	
 	useEffect(() => {
-		setId(options[idIndex]);
-	}, [idIndex]);
-	
-	useEffect(() => {
 		setRender(toggleBlock(id));
-	}, [id])
+	}, [])
 	
 	function toggleBlock(id){
 		switch(id){
+			default:
+				return (<Block.Undefined />);
 			case "1-1":
 				return (<Block.NoBlock />);
 			case "1-2":
@@ -34,8 +32,6 @@ export default function Component({ X, Y, Data }){
 				return (<Block.Start />);
 			case "1-4":
 				return (<Block.Finish />);
-			default:
-				return (<Block.Undefined />);
 		}
 	}
 	
