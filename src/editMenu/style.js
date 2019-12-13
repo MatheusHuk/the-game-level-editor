@@ -1,22 +1,43 @@
 import styled from 'styled-components';
+import * as images from '../assets/images.js';
 
 export const Edit = styled.div`
-	margin-top: 25px;
 	width: 800px;
 	height: 90px;
-	border: 5px solid yellow;
 	align-items: center;
 	display: flex;
+	border: 1px solid white;
 `;
 
 export const Titles = styled.div`
+	margin-bottom: -1px;
+	margin-top: 15px;
+	border-top-left-radius: 5pt;
+	border-top-right-radius: 5pt;
 	width: 800px;
 	height: 20px;
+	display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+`;
+
+export const Tab = styled.div`
+	width: 100px;
+	height: 20px;
 	background-color: black;
+	border-top-left-radius: 5pt;
+	border-top-right-radius: 5pt;
+	border: 1px solid white;
+	border-bottom: ${props => props.selected ? '1px solid black' : '1px solid white'};
+	z-index: 999;
+	box-sizing: border-box;
+	cursor: pointer;
 `;
 
 export const List = styled.div`
-	height: 70px;
+	height: 80px;
     width: auto;
 	min-width: auto;
 	display: flex;
@@ -64,4 +85,44 @@ export const Finish = styled.div`
 	height: 50px;
 	background-color: green;
 	border: ${props => props.selected ? '2px solid yellow' : 'none' };
+`;
+
+export const Key = styled.div`
+	width: 50px;
+	height: 50px;
+	background-color: #808080;
+	border: ${props => props.selected ? '2px solid yellow' : 'none' };
+	background-image: url(${images.Key});
+	background-size: contain;
+	background-position: center;
+`;
+
+export const Life = styled.div`
+	width: 50px;
+	height: 50px;
+	background-color: #808080;
+	border: ${props => props.selected ? '2px solid yellow' : 'none' };
+	background-image: url(${images.Life});
+	background-size: contain;
+	background-position: center;
+`;
+
+export const Zip = styled.div`
+	width: 50px;
+	height: 50px;
+	background-color: #808080;
+	border: ${props => props.selected ? '2px solid yellow' : 'none' };
+	background-image: url(${images.Zip});
+	background-size: contain;
+	background-position: center;
+`;
+
+export const Crystal = styled.div`
+	width: 50px;
+	height: 50px;
+	background-color: #808080;
+	border: ${props => props.selected ? '2px solid yellow' : 'none' };
+	background-image: url(${images.Crystal});
+	background-size: contain;
+	background-position: center;
 `;

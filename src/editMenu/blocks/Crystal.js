@@ -3,10 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as Style from '../style.js';
 import { select } from '../../store/ducks/editor';
 
-export default function Block(){
+export default function Crystal(){
 	
 	const { selectedBlock } = useSelector(store => store.editor);
-	const id = "1-3";
+	const id = "2-4";
 	const dispatch = useDispatch();
 	
 	const selectBlock = () => {
@@ -21,7 +21,7 @@ export default function Block(){
 	}, [selectedBlock]);
 	
 	return (
-		<Style.Start 
+		<Style.Crystal 
 			onClick={selectBlock}
 			selected={id == selectedBlock}
 		/>

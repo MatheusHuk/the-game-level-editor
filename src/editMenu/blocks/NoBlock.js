@@ -10,7 +10,11 @@ export default function Block(){
 	const dispatch = useDispatch();
 	
 	const selectBlock = () => {
-		dispatch(select(id))
+		if(selectedBlock !== id){
+			dispatch(select(id));
+		}else{
+			dispatch(select(""));
+		}
 	}
 	
 	useEffect(() => {
