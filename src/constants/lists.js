@@ -2,7 +2,7 @@ export const lists = [
 	'Path',
 	'Items',
 	'Obstacle',
-	'Cenario',
+	'Scenario',
 	'Interation',
 	'Change Place'
 ];

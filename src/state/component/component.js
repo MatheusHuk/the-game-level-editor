@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as Block from './style.js';
 import { options } from '../../constants/options.js';
 
-export default function Component({ X, Y, Data }){
+export default function Component({ X, Y, Data, toggleLevelData }){
 	
 	const [render, setRender] = useState();
 	const [id, setId] = useState();
@@ -12,6 +12,7 @@ export default function Component({ X, Y, Data }){
 	
 	const toggleId = () => {
 		if(selectedBlock !== ""){
+			toggleLevelData(X,Y,selectedBlock);
 			setRender(toggleBlock(selectedBlock));
 		}
 	}

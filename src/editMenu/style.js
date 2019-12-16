@@ -23,6 +23,19 @@ export const Titles = styled.div`
     flex-wrap: nowrap;
 `;
 
+export const Bottom = styled.div`
+	margin-top: -1px;
+	border-bottom-left-radius: 5pt;
+	border-bottom-right-radius: 5pt;
+	width: 800px;
+	height: 20px;
+	display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: center;
+    flex-wrap: nowrap;
+`;
+
 export const Tab = styled.div`
 	width: 100px;
 	height: 20px;
@@ -31,6 +44,19 @@ export const Tab = styled.div`
 	border-top-right-radius: 5pt;
 	border: 1px solid white;
 	border-bottom: ${props => props.selected ? '1px solid black' : '1px solid white'};
+	z-index: 999;
+	box-sizing: border-box;
+	cursor: pointer;
+`;
+
+export const BottomTab = styled.div`
+	width: 100px;
+	height: 20px;
+	background-color: black;
+	border-bottom-left-radius: 5pt;
+	border-bottom-right-radius: 5pt;
+	border: 1px solid white;
+	border-top: ${props => props.selected ? '1px solid black' : '1px solid white'};
 	z-index: 999;
 	box-sizing: border-box;
 	cursor: pointer;
@@ -45,6 +71,10 @@ export const List = styled.div`
     align-items: left;
     justify-content: flex-start;
     flex-wrap: nowrap;
+`;
+
+export const Export = styled.div`
+	
 `;
 
 export const Box = styled.div`

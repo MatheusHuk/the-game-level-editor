@@ -6,6 +6,14 @@ import { Data } from './data.js';
 export default function State(){
 	
 	const [level, setLevel] = useState(Data);
+	const [levelData, setLevelData] = useState(Data);
+	
+	const toggleLevelData = (x, y, data) => {
+		console.log('X: ',x);
+		console.log('Y: ',y);
+		console.log('Data: ',data);
+		levelData[x][y] = data;
+	}
 	
 	const render = (x, y, el) => {
 		return(
@@ -13,6 +21,7 @@ export default function State(){
 				X={x}
 				Y={y}
 				Data={el}
+				toggleLevelData={toggleLevelData}
 			/>
 		)
 	}

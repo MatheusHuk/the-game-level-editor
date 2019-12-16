@@ -5,7 +5,7 @@ import * as Style from './style.js';
 import * as Block from './blocks';
 import { options } from '../constants/options.js';
 import { lists } from '../constants/lists.js';
-import { selectList } from '../store/ducks/editor';
+import { selectList, changeExportMode } from '../store/ducks/editor';
 
 export default function EditMenu(){
 	
@@ -13,27 +13,33 @@ export default function EditMenu(){
 	
 	const [render, setRender] = useState();
 	const [typeList, setTypeList] = useState();
-	const { selectedList } = useSelector((store) => store.editor);
+	const { selectedList, exportMode } = useSelector((store) => store.editor);
 	
 	useEffect(() => {
 		setRender(renderBlockList());
 		setTypeList(renderList());
 	}, [selectedList]);
 	
+	function toggleExport() {
+		dispatch(changeExportMode(!exportMode));
+	};
+	
 	function changeList(id){
-		dispatch(selectList(id))
+		dispatch(selectList(id));
 	}
 	
 	function renderBlockList(){
-		return options[selectedList].map((block) => {
-			return (
-				<Style.Box>
-					{
-						diffBlock(block)
-					}
-				</Style.Box>
-			);
-		})
+		if(selectedList >= 0){
+			return options[selectedList].map((block) => {
+				return (
+					<Style.Box>
+						{
+							diffBlock(block)
+						}
+					</Style.Box>
+				);
+			})
+		}
 	}
 	
 	function renderList(){
@@ -41,7 +47,7 @@ export default function EditMenu(){
 			return (
 				<Style.Tab 
 					onClick={() => changeList(index)}
-					selected={index === selectedList}
+					selected={index === selectedList && !exportMode}
 				>
 					{item}
 				</Style.Tab>
@@ -78,14 +84,29 @@ export default function EditMenu(){
 				}
 			</Style.Titles>
 			<Style.Edit>
-				<ScrollContainer hideScrollBar={true} horizontal={false}>
-					<Style.List>
-						{
-							render
-						}
-					</Style.List>
-				</ScrollContainer>
+			{
+				exportMode ? 
+					<Style.Export>
+					
+					</Style.Export> 
+					:
+					<ScrollContainer hideScrollBar={true} horizontal={false}>
+						<Style.List>
+							{
+								render
+							}
+						</Style.List>
+					</ScrollContainer>
+			}
 			</Style.Edit>
+			<Style.Bottom>
+				<Style.BottomTab
+					selected={exportMode}
+					onClick={toggleExport}
+				>
+					Export
+				</Style.BottomTab>
+			</Style.Bottom>
 		</>
 	)
 }
