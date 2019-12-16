@@ -21,7 +21,7 @@ export default function EditMenu(){
 	}, [selectedList]);
 	
 	function toggleExport() {
-		dispatch(changeExportMode(!exportMode));
+		dispatch(changeExportMode());
 	};
 	
 	function changeList(id){

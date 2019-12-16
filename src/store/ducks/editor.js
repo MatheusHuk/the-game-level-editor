@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action) {
 				...state,
 				selectedList: -1,
 				selectedBlock: "",
-				exportMode: action.payload.mode
+				exportMode: true
 			}
 		default:
 			return global.reducer(state, initialState, action);
@@ -60,13 +60,10 @@ export function selectList(index){
 	};
 }
 
-export function changeExportMode(mode){
+export function changeExportMode(){
 	return async (dispatch) => {
 		dispatch({
 			type: Types.CHANGE_EXPORT_MODE,
-			payload: {
-				mode: mode
-			}
 		});
 	};
 }
