@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as Style from '../style.js';
+import * as Style from './style.js';
 import { select } from '../../store/ducks/editor';
 
-export default function Key(){
+export default function Life(){
 	
 	const { selectedBlock } = useSelector(store => store.editor);
-	const id = "2-1";
+	const id = "2-2";
 	const dispatch = useDispatch();
 	
 	const selectBlock = () => {
@@ -21,7 +21,7 @@ export default function Key(){
 	}, [selectedBlock]);
 	
 	return (
-		<Style.Key 
+		<Style.Life 
 			onClick={selectBlock}
 			selected={id == selectedBlock}
 		/>

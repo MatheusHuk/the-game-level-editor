@@ -2,7 +2,7 @@ import fileSaver from 'file-saver';
 
 export default class File{
 	
-	static save(headers, levelData){
+	static save(headers, levelData, filename){
 		
 		function normalize(data){
 			let string = "";
@@ -24,7 +24,8 @@ export default class File{
             type: 'text/csv;charset=utf-8',
         });
 		
-		fileSaver.saveAs(content, `teste.csv`);
+		fileSaver.saveAs(content, `${filename}.csv`);
+		
 	}
 	
 }

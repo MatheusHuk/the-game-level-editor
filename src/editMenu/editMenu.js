@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import * as Style from './style.js';
-import * as Block from './blocks';
+import * as Block from '../blocks/menu';
 import { options } from '../constants/options.js';
 import { headers } from '../constants/headers.js';
 import { lists } from '../constants/lists.js';
@@ -24,7 +24,6 @@ export default function EditMenu(){
 	
 	function toggleExport() {
 		dispatch(changeExportMode());
-		exportLevel();
 	};
 	
 	function changeList(id){
@@ -59,13 +58,17 @@ export default function EditMenu(){
 	}
 	
 	function exportLevel(){
-		File.save(headers, levelData);
+		if(document.getElementById('filename').value === ""){
+			alert('Write a name to the file');
+			return;
+		}
+		File.save(headers, levelData, document.getElementById('filename').value);
 	}
 	
 	function diffBlock(block){
 		switch(block){
 			case "1-1":
-				return (<><Block.NoBlock />No Block</>);
+				return (<><Block.NoBlock game={false}/>No Block</>);
 			case "1-2":
 				return (<><Block.Block />Block</>);
 			case "1-3":
@@ -94,7 +97,15 @@ export default function EditMenu(){
 				{
 					exportMode ? 
 						<Style.Export>
-						
+							<Style.ExportBox>
+								File name:
+								<input type="text" id="filename"/>
+								<Style.ExportButton
+									onClick={exportLevel}
+								>
+								Export File
+								</Style.ExportButton>
+							</Style.ExportBox>
 						</Style.Export> 
 						:
 						<ScrollContainer hideScrollBar={true} horizontal={false}>

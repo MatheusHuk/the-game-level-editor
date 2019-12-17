@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import * as images from '../assets/images.js';
 
 export const Edit = styled.div`
 	width: 800px;
@@ -76,7 +75,39 @@ export const List = styled.div`
 `;
 
 export const Export = styled.div`
+	height: 80px;
+    width: 800px;
+	display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+	text-align: center;
+	justify-content: center;
+`;
+
+export const ExportBox = styled.div`
+	height: 80px;
+    width: 200px;
+	display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+	text-align: center;
+	justify-content: center;
+`;
+
+export const ExportButton = styled.div`
+	width: 100px;
+	height: 20px;
+	font-size: 15px;
+	background-color: black;
+	border-radius: 5pt;
+	border: 1px solid white;
+	box-sizing: border-box;
+	cursor: pointer;
 	
+	:hover{
+		border: 1px solid red;
+		color: red;
+	}
 `;
 
 export const Box = styled.div`
@@ -89,72 +120,4 @@ export const Box = styled.div`
 	justify-content: center;
 	color: white;
 	padding: 0 10px 0 10px;
-`;
-
-export const NoBlock = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: #000;
-	border: ${props => props.selected ? '2px solid yellow' : '1px solid white' };
-`;
-
-export const Block = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: #808080;
-	border: ${props => props.selected ? '2px solid yellow' : 'none' };
-`;
-
-export const Start = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: red;
-	border: ${props => props.selected ? '2px solid yellow' : 'none' };
-`;
-
-export const Finish = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: green;
-	border: ${props => props.selected ? '2px solid yellow' : 'none' };
-`;
-
-export const Key = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: #808080;
-	border: ${props => props.selected ? '2px solid yellow' : 'none' };
-	background-image: url(${images.Key});
-	background-size: contain;
-	background-position: center;
-`;
-
-export const Life = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: #808080;
-	border: ${props => props.selected ? '2px solid yellow' : 'none' };
-	background-image: url(${images.Life});
-	background-size: contain;
-	background-position: center;
-`;
-
-export const Zip = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: #808080;
-	border: ${props => props.selected ? '2px solid yellow' : 'none' };
-	background-image: url(${images.Zip});
-	background-size: contain;
-	background-position: center;
-`;
-
-export const Crystal = styled.div`
-	width: 50px;
-	height: 50px;
-	background-color: #808080;
-	border: ${props => props.selected ? '2px solid yellow' : 'none' };
-	background-image: url(${images.Crystal});
-	background-size: contain;
-	background-position: center;
 `;

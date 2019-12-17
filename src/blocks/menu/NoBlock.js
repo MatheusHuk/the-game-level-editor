@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as Style from '../style.js';
+import * as Style from './style.js';
 import { select } from '../../store/ducks/editor';
 
-export default function Block(){
+export default function Block({ game }){
 	
 	const { selectedBlock } = useSelector(store => store.editor);
-	const id = "1-4";
+	const id = "1-1";
 	const dispatch = useDispatch();
 	
 	const selectBlock = () => {
+		if(game)
+			return;
 		if(selectedBlock !== id){
 			dispatch(select(id));
 		}else{
@@ -21,9 +23,10 @@ export default function Block(){
 	}, [selectedBlock]);
 	
 	return (
-		<Style.Finish 
+		<Style.NoBlock 
 			onClick={selectBlock}
 			selected={id == selectedBlock}
+			game={game}
 		/>
 	);
 }

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as Style from '../style.js';
+import * as Style from './style.js';
 import { select } from '../../store/ducks/editor';
 
-export default function Zip(){
+export default function Block(){
 	
 	const { selectedBlock } = useSelector(store => store.editor);
-	const id = "2-3";
+	const id = "1-4";
 	const dispatch = useDispatch();
 	
 	const selectBlock = () => {
@@ -21,7 +21,7 @@ export default function Zip(){
 	}, [selectedBlock]);
 	
 	return (
-		<Style.Zip 
+		<Style.Finish 
 			onClick={selectBlock}
 			selected={id == selectedBlock}
 		/>
