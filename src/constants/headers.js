@@ -1,12 +1,12 @@
 export const headers = [
-	'block1',
-	'block2',
-	'block3',
-	'block4',
-	'block5',
-	'block6',
-	'block7',
-	'block8',
-	'block9',
-	'block10'
-	]
+	'Block1',
+	'Block2',
+	'Block3',
+	'Block4',
+	'Block5',
+	'Block6',
+	'Block7',
+	'Block8',
+	'Block9',
+	'Block10'
+]

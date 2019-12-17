@@ -39,6 +39,7 @@ export const Bottom = styled.div`
 export const Tab = styled.div`
 	width: 100px;
 	height: 20px;
+	font-size: 15px;
 	background-color: black;
 	border-top-left-radius: 5pt;
 	border-top-right-radius: 5pt;
@@ -52,6 +53,7 @@ export const Tab = styled.div`
 export const BottomTab = styled.div`
 	width: 100px;
 	height: 20px;
+	font-size: 15px;
 	background-color: black;
 	border-bottom-left-radius: 5pt;
 	border-bottom-right-radius: 5pt;

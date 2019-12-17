@@ -4,8 +4,10 @@ import ScrollContainer from 'react-indiana-drag-scroll';
 import * as Style from './style.js';
 import * as Block from './blocks';
 import { options } from '../constants/options.js';
+import { headers } from '../constants/headers.js';
 import { lists } from '../constants/lists.js';
 import { selectList, changeExportMode } from '../store/ducks/editor';
+import File from '../services/File.js';
 
 export default function EditMenu(){
 	
@@ -13,7 +15,7 @@ export default function EditMenu(){
 	
 	const [render, setRender] = useState();
 	const [typeList, setTypeList] = useState();
-	const { selectedList, exportMode } = useSelector((store) => store.editor);
+	const { selectedList, exportMode, levelData } = useSelector((store) => store.editor);
 	
 	useEffect(() => {
 		setRender(renderBlockList());
@@ -22,6 +24,7 @@ export default function EditMenu(){
 	
 	function toggleExport() {
 		dispatch(changeExportMode());
+		exportLevel();
 	};
 	
 	function changeList(id){
@@ -55,6 +58,10 @@ export default function EditMenu(){
 		})
 	}
 	
+	function exportLevel(){
+		File.save(headers, levelData);
+	}
+	
 	function diffBlock(block){
 		switch(block){
 			case "1-1":
@@ -84,20 +91,20 @@ export default function EditMenu(){
 				}
 			</Style.Titles>
 			<Style.Edit>
-			{
-				exportMode ? 
-					<Style.Export>
-					
-					</Style.Export> 
-					:
-					<ScrollContainer hideScrollBar={true} horizontal={false}>
-						<Style.List>
-							{
-								render
-							}
-						</Style.List>
-					</ScrollContainer>
-			}
+				{
+					exportMode ? 
+						<Style.Export>
+						
+						</Style.Export> 
+						:
+						<ScrollContainer hideScrollBar={true} horizontal={false}>
+							<Style.List>
+								{
+									render
+								}
+							</Style.List>
+						</ScrollContainer>
+				}
 			</Style.Edit>
 			<Style.Bottom>
 				<Style.BottomTab

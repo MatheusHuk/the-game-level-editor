@@ -3,13 +3,15 @@ import * as global from './global';
 export const Types = {
 	SELECT: 'editor/SELECT',
 	SELECT_LIST: 'editor/SELECT_LIST',
-	CHANGE_EXPORT_MODE: 'editor/CHANGE_EXPORT_MODE'
+	CHANGE_EXPORT_MODE: 'editor/CHANGE_EXPORT_MODE',
+	CHANGE_LEVEL_DATA: 'editor/CHANGE_LEVEL_DATA'
 };
 
 const initialState = {
 	selectedBlock: "",
 	selectedList: 0,
-	exportMode: false
+	exportMode: false,
+	levelData: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -32,6 +34,11 @@ export default function reducer(state = initialState, action) {
 				selectedList: -1,
 				selectedBlock: "",
 				exportMode: true
+			}
+		case Types.CHANGE_LEVEL_DATA:
+			return {
+				...state,
+				levelData: action.data
 			}
 		default:
 			return global.reducer(state, initialState, action);
@@ -66,4 +73,13 @@ export function changeExportMode(){
 			type: Types.CHANGE_EXPORT_MODE,
 		});
 	};
+}
+
+export function changeLevelData(data){
+	return async (dispatch) => {
+		dispatch({
+			type: Types.CHANGE_LEVEL_DATA,
+			data: data
+		})
+	}
 }

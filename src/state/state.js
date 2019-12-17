@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Line, Block } from './style.js';
 import Component from './component/component.js';
 import { Data } from './data.js';
+import { changeLevelData } from '../store/ducks/editor';
 
 export default function State(){
 	
+	const dispatch = useDispatch();
+	const [render, setRender] = useState(Data);
 	const [level, setLevel] = useState(Data);
-	const [levelData, setLevelData] = useState(Data);
+	const { levelData } = useSelector(store => store.editor);
+	
+	useEffect(() => {
+		dispatch(changeLevelData(Data));
+	}, []);
 	
 	const toggleLevelData = (x, y, data) => {
-		console.log('X: ',x);
-		console.log('Y: ',y);
-		console.log('Data: ',data);
-		levelData[x][y] = data;
+		level[x][y] = data;
+		dispatch(changeLevelData(level));
 	}
 	
-	const render = (x, y, el) => {
+	const component = (x, y, el) => {
 		return(
 			<Component 
 				X={x}
@@ -29,13 +35,13 @@ export default function State(){
 	return (
 		<>
 			{
-				level.map((data, i) => {
+				render.map((data, i) => {
 					return (
 						<Line>
 							{
 								data.map((el, j) => {
 									return (
-										render(i, j, el)
+										component(i, j, el)
 									)
 								})
 							}
